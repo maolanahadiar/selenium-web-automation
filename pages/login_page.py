@@ -7,22 +7,22 @@ from config.settings import Config
 class LoginPage(BasePage):
 
     # LOCATORS
-    USERNAME = (By.ID, "username")
-    PASSWORD = (By.ID, "password")
-    LOGIN_BTN = (By.CSS_SELECTOR, "button[type='submit']")
-    EXPECTED_MSG = (By.ID, "flash")
+    FIELD_USERNAME = (By.ID, "username")
+    FIELD_PASSWORD = (By.ID, "password")
+    BUTTON_LOGIN = (By.CSS_SELECTOR, "button[type='submit']")
+    RESPONSE_MESSAGE = (By.ID, "flash")
 
     def open(self):
         self.open_url(Config.LOGIN_URL)
 
-    def login(self, username, password):
-        self.type(*self.USERNAME, text=username)
-        self.type(*self.PASSWORD, text=password)
-        self.click(*self.LOGIN_BTN)
+    def input_login_form(self, username, password):
+        self.type(*self.FIELD_USERNAME, text=username)
+        self.type(*self.FIELD_PASSWORD, text=password)
+        self.click(*self.BUTTON_LOGIN)
 
     def get_expected_message(self):
         wait = WebDriverWait(self.driver, 10)
         element = wait.until(
-            EC.visibility_of_element_located(self.EXPECTED_MSG)
+            EC.visibility_of_element_located(self.RESPONSE_MESSAGE)
         )
         return element.text

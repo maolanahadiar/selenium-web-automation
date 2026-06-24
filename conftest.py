@@ -37,7 +37,7 @@ def pytest_runtest_makereport(item):
 
 #setup toggle allure report to make it auto open after running test
 #change mode "serve" for auto or "generate" for manual
-MODE = "serve"
+MODE = "generate"
 
 def pytest_sessionfinish(session, exitstatus):
 
