@@ -1,28 +1,33 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 from config.settings import Config
 
 class LoginPage(BasePage):
 
     # LOCATORS
-    FIELD_USERNAME = (By.ID, "username")
-    FIELD_PASSWORD = (By.ID, "password")
-    BUTTON_LOGIN = (By.CSS_SELECTOR, "button[type='submit']")
-    RESPONSE_MESSAGE = (By.ID, "flash")
+    LOGIN_TITLE = (By.CSS_SELECTOR, ".text-center")
+    USERNAME_INPUT = (By.ID, "userName")
+    PASSWORD_INPUT = (By.ID, "password")
+    LOGIN_BUTTON = (By.ID, "login")
+    USERNAME_LABEL = (By.ID, "userName-value")
+    ERROR_MESSAGE = (By.ID, "name")
 
-    def open(self):
+    def open_login_page(self):
         self.open_url(Config.LOGIN_URL)
+    
+    def current_url_of_login(self):
+        return self.get_current_url()
+    
+    def get_page_title_of_login(self):
+        return self.get_text(*self.LOGIN_TITLE)
 
     def input_login_form(self, username, password):
-        self.type(*self.FIELD_USERNAME, text=username)
-        self.type(*self.FIELD_PASSWORD, text=password)
-        self.click(*self.BUTTON_LOGIN)
+        self.type(*self.USERNAME_INPUT, text=username)
+        self.type(*self.PASSWORD_INPUT, text=password)
+        self.click(*self.LOGIN_BUTTON)
 
     def get_expected_message(self):
-        wait = WebDriverWait(self.driver, 10)
-        element = wait.until(
-            EC.visibility_of_element_located(self.RESPONSE_MESSAGE)
-        )
-        return element.text
+        return self.get_text(*self.USERNAME_LABEL)
+    
+    def get_error_message(self):
+        return self.get_text(*self.ERROR_MESSAGE)
