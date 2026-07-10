@@ -4,3 +4,6 @@ class Config:
     TEXTBOX_URL = f"{BASE_URL}/text-box"
     CHECKBOX_URL = f"{BASE_URL}/checkbox"
     RADIO_URL = f"{BASE_URL}/radio-button"
+    BUTTONS_URL = f"{BASE_URL}/buttons"
+    UPLOAD_DOWNLOAD_URL = f"{BASE_URL}/upload-download"
+    DROPPABLE_URL = "https://jqueryui.com/droppable/"

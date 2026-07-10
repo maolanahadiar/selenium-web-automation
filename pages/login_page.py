@@ -26,7 +26,7 @@ class LoginPage(BasePage):
         self.type(*self.PASSWORD_INPUT, text=password)
         self.click(*self.LOGIN_BUTTON)
 
-    def get_expected_message(self):
+    def get_success_message(self):
         return self.get_text(*self.USERNAME_LABEL)
     
     def get_error_message(self):

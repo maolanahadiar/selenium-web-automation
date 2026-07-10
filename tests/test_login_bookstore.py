@@ -17,7 +17,7 @@ def test_login_success(browser):
         VALID_LOGIN["username"],
         VALID_LOGIN["password"]
     )
-    assert page.get_expected_message() == VALID_LOGIN["expected_result"]
+    assert page.get_success_message() == VALID_LOGIN["expected_result"]
 
 def test_login_invalid(browser):
     page = LoginPage(browser)

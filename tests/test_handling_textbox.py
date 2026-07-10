@@ -1,6 +1,6 @@
 from pages.textbox_page import TextBoxPage
 from config.settings import Config
-from data.data_testing import TEXTBOX_DATA
+from data.data_testing import TEXTBOX
 
 def test_handling_textbox(browser):
     page = TextBoxPage(browser)
@@ -11,14 +11,14 @@ def test_handling_textbox(browser):
     
     #Verify URL and title page
     assert page.current_url_of_textbox() == Config.TEXTBOX_URL
-    assert page.get_page_title_of_textbox() == TEXTBOX_DATA["title_page"]
+    assert page.get_page_title_of_textbox() == TEXTBOX["title_page"]
     
     #Input textbox form and submit
     page.input_textbox_form(
-        TEXTBOX_DATA["name"],
-        TEXTBOX_DATA["email"],
-        TEXTBOX_DATA["current_address"],
-        TEXTBOX_DATA["permanent_address"]
+        TEXTBOX["name"],
+        TEXTBOX["email"],
+        TEXTBOX["current_address"],
+        TEXTBOX["permanent_address"]
     )
     page.click_submit_button()
     
@@ -26,9 +26,9 @@ def test_handling_textbox(browser):
     actual_result = page.get_actual_result()
     
     expected_result = {        
-        "Name": TEXTBOX_DATA["name"],
-        "Email": TEXTBOX_DATA["email"],
-        "Current Address": TEXTBOX_DATA["current_address"],
-        "Permananet Address": TEXTBOX_DATA["permanent_address"],
+        "Name": TEXTBOX["name"],
+        "Email": TEXTBOX["email"],
+        "Current Address": TEXTBOX["current_address"],
+        "Permananet Address": TEXTBOX["permanent_address"],
     }
     assert actual_result == expected_result

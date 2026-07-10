@@ -16,7 +16,7 @@ INVALID_LOGIN = {
         "expected_result": "Invalid username or password!",
 }
 
-TEXTBOX_DATA = {
+TEXTBOX = {
     "title_page": "Text Box",
     "name": dummy.name(),
     "email": dummy.email(),
@@ -24,13 +24,13 @@ TEXTBOX_DATA = {
     "permanent_address": "Jl. Laksda Adisucipto No.123, Yogyakarta",
 }
 
-RADIO_DATA = {
+RADIO = {
     "title_page": "Radio Button",
     "expected_result_of_yes": "You have selected Yes",
     "expected_result_of_impressive": "You have selected Impressive",
 }
 
-CHECKBOX_DATA = {
+CHECKBOX = {
     "title_page": "Check Box",
     "expected_result": [
         "home",
@@ -51,4 +51,21 @@ CHECKBOX_DATA = {
         "classified",
         "general",
     ]
+}
+
+BUTTONS = {
+    "title_page": "Buttons",
+    "expected_result_of_double_click": "You have done a double click",
+    "expected_result_of_right_click": "You have done a right click",
+    "expected_result_of_dynamic_element": "You have done a dynamic click",
+}
+
+DRAG_AND_DROP = {
+    "title_page": "Droppable | jQuery UI",
+    "expected_result": "Dropped!"
+}
+
+UPLOAD_AND_DOWNLOAD = {
+    "title_page": "Upload and Download",
+    "expected_result": "C:\\fakepath\\sampleFile.jpeg"
 }

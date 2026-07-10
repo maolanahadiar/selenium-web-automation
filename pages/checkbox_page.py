@@ -44,7 +44,7 @@ class CheckBoxPage(BasePage):
     def click_deselect_all_checkbox(self):
         self.click(*self.DESELECT_ALL_CHECKBOX)
         
-    def get_selected_item(self):
+    def get_actual_result(self):
         text = self.get_text(*self.OUTPUT_TEXT)
         text = text.replace("You have selected :", "")
         
