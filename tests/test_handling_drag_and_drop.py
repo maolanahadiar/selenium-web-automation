@@ -1,6 +1,7 @@
 from pages.droppable_page import DragAndDropPage
 from config.settings import Config
-from data.data_testing import DRAG_AND_DROP
+from testdata.page_titles import TITLES
+from testdata.messages import MESSAGES
 
 def test_handling_drag_and_drop(browser):
     page = DragAndDropPage(browser)
@@ -10,11 +11,11 @@ def test_handling_drag_and_drop(browser):
     
     #Verify URL and title page 
     assert page.current_url_of_droppable() == Config.DROPPABLE_URL
-    assert page.get_page_title_of_droppable() == DRAG_AND_DROP["title_page"]
+    assert page.get_page_title_of_droppable() == TITLES["drag_and_drop"]["page_title"]
     
     #Switch to inline frame of website
     page.switch_to_iframe()
     
     #Drag & drop the item then verify the result
     page.drag_and_drop_item()
-    assert page.get_actual_result() == DRAG_AND_DROP["expected_result"]
+    assert page.get_actual_result() == MESSAGES["drag_and_drop"]["expected_result"]

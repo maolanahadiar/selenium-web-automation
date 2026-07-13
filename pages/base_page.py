@@ -102,10 +102,6 @@ class BasePage:
         
         actions.drag_and_drop(source, target).perform()
         
-    def upload_file(self, by, locator, file_name):
-        file_path = (
-            Path(__file__).parent.parent
-            / "data"
-            / file_name
-        )
-        self.find(by, locator).send_keys(str(file_path))
+    def upload_file(self, by, locator):
+        FILE = Path("testdata/images/sampleFile.jpeg").resolve()
+        self.find(by, locator).send_keys(str(FILE))

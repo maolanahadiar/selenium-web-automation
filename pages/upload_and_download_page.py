@@ -22,8 +22,8 @@ class UploadDownloadPage(BasePage):
     def download_image_file(self):
         self.click(*self.DOWNLOAD_BUTTON)
         
-    def upload_image_file(self, file_name):
-        self.upload_file(*self.UPLOAD_BUTTON, file_name)
+    def upload_image_file(self):
+        self.upload_file(*self.UPLOAD_BUTTON)
         
     def get_actual_result(self):
         return self.get_text(*self.FILEPATH_TEXT)

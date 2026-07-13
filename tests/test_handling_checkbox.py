@@ -1,6 +1,7 @@
 from pages.checkbox_page import CheckBoxPage
 from config.settings import Config
-from data.data_testing import CHECKBOX
+from testdata.page_titles import TITLES
+from testdata.messages import MESSAGES
 
 def test_handling_checkbox(browser):
     page = CheckBoxPage(browser)
@@ -11,7 +12,7 @@ def test_handling_checkbox(browser):
     
     #Verify URL and title page    
     assert page.current_url_of_checkbox() == Config.CHECKBOX_URL
-    assert page.get_page_title_of_checkbox() == CHECKBOX["title_page"]
+    assert page.get_page_title_of_checkbox() == TITLES["checkbox"]["page_title"]
     
     #Open checkbox area
     page.open_checkbox_area()
@@ -21,7 +22,7 @@ def test_handling_checkbox(browser):
     page.click_documents_checkbox()
     page.click_downloads_checkbox()
     
-    assert page.get_actual_result() == set(CHECKBOX["expected_result"])
+    assert page.get_actual_result() == set(MESSAGES["checkbox"]["expected_result"])
     
     #Deselect all checkbox and verify the result
     page.click_deselect_all_checkbox()

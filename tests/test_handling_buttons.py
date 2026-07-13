@@ -1,6 +1,7 @@
 from pages.buttons_page import ButtonsPage
 from config.settings import Config
-from data.data_testing import BUTTONS
+from testdata.page_titles import TITLES
+from testdata.messages import MESSAGES
 
 def test_handling_buttons(browser):
     page = ButtonsPage(browser)
@@ -11,7 +12,7 @@ def test_handling_buttons(browser):
     
     #Verify URL and title page
     assert page.get_current_url() == Config.BUTTONS_URL
-    assert page.get_page_title_of_button() == BUTTONS["title_page"]
+    assert page.get_page_title_of_button() == TITLES["buttons"]["page_title"]
     
     #Double click the button
     page.double_click_button()
@@ -23,6 +24,6 @@ def test_handling_buttons(browser):
     page.click_dynamic_element()
     
     #Verify the result
-    assert page.get_actual_result_of_double_click() == BUTTONS["expected_result_of_double_click"]
-    assert page.get_actual_result_of_right_click() == BUTTONS["expected_result_of_right_click"]
-    assert page.get_actual_result_of_dynamic_element() == BUTTONS["expected_result_of_dynamic_element"]
+    assert page.get_actual_result_of_double_click() == MESSAGES["buttons"]["expected_result_of_double_click"]
+    assert page.get_actual_result_of_right_click() == MESSAGES["buttons"]["expected_result_of_right_click"]
+    assert page.get_actual_result_of_dynamic_element() == MESSAGES["buttons"]["expected_result_of_dynamic_element"]

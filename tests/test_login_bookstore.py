@@ -1,6 +1,8 @@
 from pages.login_page import LoginPage
-from data.data_testing import VALID_LOGIN, INVALID_LOGIN
 from config.settings import Config
+from testdata.credentials import LOGIN
+from testdata.page_titles import TITLES
+from testdata.messages import MESSAGES
 
 def test_login_success(browser):
     page = LoginPage(browser)
@@ -10,14 +12,14 @@ def test_login_success(browser):
     
     #Verify URL and title page
     assert page.current_url_of_login() == Config.LOGIN_URL
-    assert page.get_page_title_of_login() == VALID_LOGIN["title_page"]
+    assert page.get_page_title_of_login() == TITLES["login"]["page_title"]
     
     #Input login form using valid credential and verify the result
     page.input_login_form(
-        VALID_LOGIN["username"],
-        VALID_LOGIN["password"]
+        LOGIN["valid"]["username"],
+        LOGIN["valid"]["password"]
     )
-    assert page.get_success_message() == VALID_LOGIN["expected_result"]
+    assert page.get_success_message() == MESSAGES["login"]["expected_result_of_success"]
 
 def test_login_invalid(browser):
     page = LoginPage(browser)
@@ -27,11 +29,11 @@ def test_login_invalid(browser):
     
     #Verify URL and title page
     assert page.current_url_of_login() == Config.LOGIN_URL
-    assert page.get_page_title_of_login() == INVALID_LOGIN["title_page"]
+    assert page.get_page_title_of_login() == TITLES["login"]["page_title"]
     
     #Input login form using invalid credential and verify the result
     page.input_login_form(
-        INVALID_LOGIN["username"],
-        INVALID_LOGIN["password"]
+        LOGIN["invalid"]["username"],
+        LOGIN["invalid"]["password"]
     )
-    assert page.get_error_message() == INVALID_LOGIN["expected_result"]
+    assert page.get_error_message() == MESSAGES["login"]["expected_result_of_failed"]

@@ -1,6 +1,7 @@
 from pages.textbox_page import TextBoxPage
 from config.settings import Config
-from data.data_testing import TEXTBOX
+from testdata.page_titles import TITLES
+from testdata.textbox import TEXTBOX
 
 def test_handling_textbox(browser):
     page = TextBoxPage(browser)
@@ -11,7 +12,7 @@ def test_handling_textbox(browser):
     
     #Verify URL and title page
     assert page.current_url_of_textbox() == Config.TEXTBOX_URL
-    assert page.get_page_title_of_textbox() == TEXTBOX["title_page"]
+    assert page.get_page_title_of_textbox() == TITLES["textbox"]["page_title"]
     
     #Input textbox form and submit
     page.input_textbox_form(
