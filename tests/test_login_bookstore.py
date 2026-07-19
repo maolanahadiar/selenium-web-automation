@@ -1,6 +1,6 @@
 from pages.login_page import LoginPage
 from config.settings import Config
-from testdata.credentials import LOGIN
+from testdata.sample_data import LOGIN
 from testdata.page_titles import TITLES
 from testdata.messages import MESSAGES
 

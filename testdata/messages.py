@@ -38,5 +38,10 @@ MESSAGES = {
         },
     "upload_and_download": {
         "expected_result": "C:\\fakepath\\sampleFile.jpeg",
-        }
+        },
+    "dropdown": {
+        "expected_result_old_dropdown": "Black",
+        "expected_result_custom_single_dropdown": "Mr.",
+        "expected_result_custom_multi_dropdown": "Blue, Black"
+    }
 }

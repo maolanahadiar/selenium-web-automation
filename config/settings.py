@@ -7,3 +7,4 @@ class Config:
     BUTTONS_URL = f"{BASE_URL}/buttons"
     UPLOAD_DOWNLOAD_URL = f"{BASE_URL}/upload-download"
     DROPPABLE_URL = "https://jqueryui.com/droppable/"
+    DROPDOWN_URL = f"{BASE_URL}/select-menu"

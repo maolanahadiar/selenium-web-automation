@@ -1,13 +1,12 @@
 from pages.textbox_page import TextBoxPage
 from config.settings import Config
 from testdata.page_titles import TITLES
-from testdata.textbox import TEXTBOX
+from testdata.sample_data import TEXTBOX
 
 def test_handling_textbox(browser):
     page = TextBoxPage(browser)
     
     #Navigate to the website
-    page.open_website()
     page.open_textbox_page()
     
     #Verify URL and title page

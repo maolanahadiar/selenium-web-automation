@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.action_chains import ActionChains
 from pathlib import Path
+from selenium.webdriver.support.ui import Select
 
 class BasePage:
     def __init__(self, driver):
@@ -105,3 +106,29 @@ class BasePage:
     def upload_file(self, by, locator):
         FILE = Path("testdata/images/sampleFile.jpeg").resolve()
         self.find(by, locator).send_keys(str(FILE))
+        
+    def select_html_dropdown_by_text(self, by, locator, text):
+        dropdown = Select(
+            self.wait.until(
+                EC.presence_of_element_located((by, locator))
+            )
+        )
+        dropdown.select_by_visible_text(text)
+
+    def select_react_dropdown(self, dropdown_locator, option_locator):
+        self.click(*dropdown_locator)
+        self.click(*option_locator)
+    
+    def get_html_dropdown_value(self, by, locator):
+        dropdown = Select(
+            self.wait.until(
+                EC.presence_of_element_located((by, locator))
+            )
+        )
+        return dropdown.first_selected_option.text
+    
+    def click_outside_area(self):
+        ActionChains(self.driver)\
+            .move_by_offset(10, 10)\
+            .click()\
+            .perform()

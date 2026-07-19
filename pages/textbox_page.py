@@ -15,12 +15,8 @@ class TextBoxPage(BasePage):
     SUBMIT_BUTTON =(By.ID, "submit")
     OUTPUT_TEXT = (By.ID, "output")
 
-    def open_website(self):
-        self.open_url(Config.BASE_URL)
-    
     def open_textbox_page(self):
-        self.click(*self.ELEMENTS_MENU)
-        self.click(*self.TEXTBOX_MENU)
+        self.open_url(Config.TEXTBOX_URL)
     
     def current_url_of_textbox(self):
         return self.get_current_url()
@@ -33,6 +29,7 @@ class TextBoxPage(BasePage):
         self.type(*self.EMAIL_INPUT, text=email)
         self.type(*self.CURRENT_ADDRESS_INPUT, text=current_address)
         self.type(*self.PERMANENT_ADDRESS_INPUT, text=permanent_address)
+        self.click_outside_area()
     
     def click_submit_button(self):
         self.scroll_to_element(*self.SUBMIT_BUTTON)
